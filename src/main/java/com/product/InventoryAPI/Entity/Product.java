@@ -1,5 +1,6 @@
-package com.product.InventoryAPI;
+package com.product.InventoryAPI.Entity;
 
+import com.product.InventoryAPI.Enum.ProductStatus;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;

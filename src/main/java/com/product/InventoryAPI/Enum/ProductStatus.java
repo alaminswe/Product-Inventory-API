@@ -1,4 +1,4 @@
-package com.product.InventoryAPI;
+package com.product.InventoryAPI.Enum;
 
 public enum ProductStatus {
     ACTIVE,

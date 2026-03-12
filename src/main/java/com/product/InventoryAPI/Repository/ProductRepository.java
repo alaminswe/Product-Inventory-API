@@ -1,6 +1,7 @@
-package com.product.InventoryAPI;
+package com.product.InventoryAPI.Repository;
 
 
+import com.product.InventoryAPI.Entity.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;
@@ -8,6 +9,5 @@ import java.util.Optional;
 public interface ProductRepository extends JpaRepository<Product, Long> {
 
     Optional<Product> findBySku(String sku);
-
     boolean existsBySku(String sku);
 }
