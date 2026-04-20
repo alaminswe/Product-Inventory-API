@@ -5,11 +5,13 @@ import com.product.InventoryAPI.Exceptions.ProductNotFoundException;
 import com.product.InventoryAPI.Exceptions.SkuAlreadyExistsException;
 import com.product.InventoryAPI.Repository.ProductRepository;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.regex.Pattern;
 
+@Slf4j
 @Service
 public class ProductService {
 
@@ -23,13 +25,10 @@ public class ProductService {
 
     // Create Product
     public Product createProduct(Product product) {
-
         validateSku(product.getSku());
-
         if (productRepository.existsBySku(product.getSku())) {
-            throw new SkuAlreadyExistsException("SKU already exists");
+            throw new SkuAlreadyExistsException ("sku");
         }
-
         return productRepository.save(product);
     }
 
@@ -66,12 +65,13 @@ public class ProductService {
     }
 
     // Delete Product
-    public void deleteProduct(Long id) {
+    public String deleteProduct(Long id) {
 
         Product product = productRepository.findById(id)
                 .orElseThrow(() -> new ProductNotFoundException("Product not found"));
 
         productRepository.delete(product);
+        return "Product has been deleted";
     }
 
     // SKU Validation
